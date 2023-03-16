@@ -1,0 +1,89 @@
+﻿
+
+
+@model DemoMVC.Models.MonHoc_KhoaHoc
+
+
+@{
+    ViewBag.Title = "LoadTenMonHoc";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width-device-width" />
+    <meta charset="utf-8" />
+
+    <title>
+        Môn học
+    </title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                @{
+                    string tenKhoahoc = "";
+                    if (Model.tenKhoaHoc != null)
+                    {
+                        tenKhoahoc = Model.tenKhoaHoc;
+                    }
+
+                }
+                <h2>Khóa học: @tenKhoahoc </h2>
+                <table class="table table-active">
+                    <thead>
+                    </thead>
+                    <tbody>
+
+                        @if (Model.listMonhoc != null)
+                        {
+                            int i = 0;
+                            foreach (var item in Model.listMonhoc)
+                            {
+                                i = i + 1;
+                                <tr>
+                                    <td>
+                                        @item.TenMonHoc
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4">
+                <h2>Khóa học</h2>
+                <table class="table table-active">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    @foreach (var item in Model.listKhoaHoc)
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="~/Home/LoadTenMonHoc?id=@item.ID">
+                                                <i class="fa-solid fa-house"></i>
+                                                @item.TenKhoaHoc
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+
+
